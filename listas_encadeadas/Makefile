@@ -1,6 +1,9 @@
 #FLAGS
 CFLAGS = -Wall -Wextra -pedantic
 
+#OSCLEAN
+OSCLEAN = rm *.out *.o
+
 #programa
 program=lista_simples
 
@@ -24,6 +27,5 @@ $(program).o:	header.h
 	gcc $(CFLAGS) -c $(program).c -o $(program).o 
 
 clean:
-	rm *.out
-	rm *.o
+	rm *.out *.o
 	clear

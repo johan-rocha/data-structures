@@ -2,7 +2,7 @@
 
 int main()
 {
-    char opcao;
+    char opcao = 1;
     celula * le = criar_lista();
 
     while(opcao != 0)

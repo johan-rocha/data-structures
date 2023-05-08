@@ -3,7 +3,7 @@
 celula * busca(celula * le, int x)
 {
     celula * aux = le->prox;
-    while(aux != NULL) //um int não pode ser NULL! alterar.
+    while(aux != NULL)
     {
         if(aux->dado == x)
             return aux;
@@ -15,11 +15,9 @@ celula * busca(celula * le, int x)
 
 celula * busca_rec(celula * le, int x)
 {
-    if(le == NULL)
-        return le;
-    if(le->dado == x)
-        return le;
-    if(le->prox->dado != x)
-        return busca_rec(le->prox, x);
-    return NULL;
+    if(le->prox == NULL) //limite /eh possivel o le->prox == NULL e o le->prox->dado == x? NAO
+        return NULL; //nesse caso, a impressao da forma que esta nao funciona
+    if(le->prox->dado == x)
+        return le->prox;
+    return busca_rec(le->prox, x);
 }
