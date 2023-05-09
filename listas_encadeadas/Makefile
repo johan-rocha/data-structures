@@ -1,31 +1,44 @@
-#FLAGS
-CFLAGS = -Wall -Wextra -pedantic
+MAIN = lista_simples
+CFLAGS = -Wall -pedantic -Wextra
+CC = gcc
+#LDFLAG = -lm
 
-#OSCLEAN
-OSCLEAN = rm *.out *.o
+#DIRECTIORIES
+SRCDIR = src
+OBJDIR = obj
+BINDIR = bin
 
-#programa
-program=lista_simples
+#SOURCE ARCHIVES
+SOURCE = $(wildcard $(SRCDIR)/*.c)
 
-all:	run
-
-run:	clean compile
-	./$(program).out
-
-debug:	clean $(program).o busca.o
-	gcc $(CFLAGS) $(program).o busca.o -g
-	gdb ./a.out
+#OBJECT ARCHIVES
+OBJECT = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCE))
 
 
-compile: $(program).o busca.o
-	gcc $(CFLAGS) $(program).o busca.o -o $(program).out
+all:	binfolder objfolder $(BINDIR)/$(MAIN).out clean
 
-busca.o:	header.h
-	gcc $(CFLAGS) -c busca.c -o busca.o
+binfolder:
+	@ echo "Gerando pasta bin"
+	mkdir -p $(BINDIR)
+objfolder:
+	@ echo "Gerando pasta obj"
+	mkdir -p $(OBJDIR)
 
-$(program).o:	header.h
-	gcc $(CFLAGS) -c $(program).c -o $(program).o 
+bin/$(MAIN).out:	$(OBJECT)
+	@ echo "linkando no .out"
+	$(CC) $(CFLAGS) $(OBJECT) -o $@
+	./$(BINDIR)/$(MAIN).out
+
+obj/$(MAIN).o:	src/$(MAIN).c	src/header.h
+	@echo "Compilando objeto de main"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+obj/%.o:	src/%.c src/header.h
+	@ echo "Compilando objetos"
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PHONY:	clean objfolder binfolder
 
 clean:
-	rm *.out *.o
-	clear
+	rm -f $(BINDIR)/* $(OBJDIR)/*
+	rmdir $(BINDIR) $(OBJDIR)

@@ -22,7 +22,8 @@ int imprimir_lista(celula * head);
 celula * busca_rec(celula * le, int x);
 celula * busca(celula * le, int x);
 
-
+/*FUNCTIONS PROTOTYPES - divide*/
+void divide_lista (celula *l, celula *l1, celula *l2);
 
 
 
