@@ -27,7 +27,6 @@ objfolder:
 bin/$(MAIN).out:	$(OBJECT)
 	@ echo "linkando no .out"
 	$(CC) $(CFLAGS) $(OBJECT) -o $@
-	cat ./src/input.txt
 	./$(BINDIR)/$(MAIN).out < ./src/input.txt 
 
 obj/$(MAIN).o:	src/$(MAIN).c	src/header.h
