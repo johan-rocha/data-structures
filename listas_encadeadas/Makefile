@@ -29,10 +29,6 @@ bin/$(MAIN).out:	$(OBJECT)
 	$(CC) $(CFLAGS) $(OBJECT) -o $@
 	./$(BINDIR)/$(MAIN).out < ./src/input.txt 
 
-obj/$(MAIN).o:	src/$(MAIN).c	src/header.h
-	@echo "Compilando objeto de main"
-	$(CC) $(CFLAGS) -c $< -o $@
-
 obj/%.o:	src/%.c src/header.h
 	@ echo "Compilando objetos"
 	$(CC) $(CFLAGS) -c $< -o $@
