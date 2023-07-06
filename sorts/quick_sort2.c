@@ -19,3 +19,11 @@ int partition(Item * v, int l, int r)
     exch(v[j], v[r]); // v[r] eh o pivot no vetor, poderia usar ponteiro para facilitar
     return j;
 }
+
+void quickSort(Item * v, int l, int r)
+{
+    int j = partition(v, l, r);
+    if(r <= l) return;//caso base, quando ja esta ordenado
+    quickSort(v, l, j-1);
+    quickSOrt(v, j+1, r);
+}

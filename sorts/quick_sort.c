@@ -5,7 +5,7 @@
 
 typedef int Item;
 
-int partition(Item * v, int r, int l)
+int partition(Item * v, int l, int r)
 {
     int tam = r-l+1; Item pivot = v[r];
     Item * menores = malloc(tam * sizeof(Item));
@@ -36,4 +36,12 @@ int partition(Item * v, int r, int l)
     return pivotPos;
 }
 
+void quickSort(Item * v, int l, int r)
+{
+    int j;
+    if(r <= l) return;
+    j = partition(v, l, r);
 
+    quickSort(v, l, j-1); //ordena o subvetor dos menores
+    quickSort(v, j+1, r); //ordena o subvetor dos maiores
+}
