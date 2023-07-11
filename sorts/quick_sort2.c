@@ -25,5 +25,5 @@ void quickSort(Item * v, int l, int r)
     int j = partition(v, l, r);
     if(r <= l) return;//caso base, quando ja esta ordenado
     quickSort(v, l, j-1);
-    quickSOrt(v, j+1, r);
+    quickSort(v, j+1, r);
 }

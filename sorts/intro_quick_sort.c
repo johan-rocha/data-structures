@@ -78,7 +78,6 @@ void introSort(Item * v, int l, int r)
         //mergesort
         //heapsort
         //smoothsort
-        //shellsort
         shellSort(v, l, r);
     }
     else
