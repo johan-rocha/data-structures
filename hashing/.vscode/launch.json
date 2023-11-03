@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/johan/Documentos/UnB/data-structures",
-      "program": "/home/johan/Documentos/UnB/data-structures/build/Debug/outDebug",
+      "cwd": "/home/johan/Documentos/UnB/data-structures/hashing",
+      "program": "/home/johan/Documentos/UnB/data-structures/hashing/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

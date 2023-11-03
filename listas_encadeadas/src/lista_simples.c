@@ -18,10 +18,11 @@ int main()
              "OPCAO (2): INSERIR ANTES DE\n"
              "OPCAO (3): REMOVER DA LISTA\n"
              "OPCAO (4): IMPRIMIR LISTA\n" 
-             "OPCAO (5): BUSCAR NA LISTA POR ITERAÇAO\n"
-             "OPCAO (6): BUSCAR NA LISTA POR RECURSAO\n"
-             "OPCAO (7): DIVIDIR LISTA IMPAR/PAR\n"
-             "OPCAO (8): MESCLAR LISTAS ORDENADAS");
+             "OPCAO (5): IMPRIMIR LISTA RECURSIVA\n"
+             "OPCAO (6): BUSCAR NA LISTA POR ITERAÇAO\n"
+             "OPCAO (7): BUSCAR NA LISTA POR RECURSAO\n"
+             "OPCAO (8): DIVIDIR LISTA IMPAR/PAR\n"
+             "OPCAO (9): MESCLAR LISTAS ORDENADAS");
         scanf("%hd", &opcao);
 
         switch(opcao)
@@ -74,21 +75,29 @@ int main()
                 imprime(le);
                 break;
             case 5:
+                printf("l1 = ");
+                imprime_rec(l1);
+                printf("l2 = ");
+                imprime_rec(l2);
+                printf("l3 = ");
+                imprime_rec(le);
+                break;
+            case 6:
                 puts("INSIRA O VALOR QUE DESEJA BUSCAR:");
                 scanf("%d", &temp);
                 temp_cell = busca(le, temp);
                 printf("o valor de sua celula eh: %d\n", temp_cell->dado);
                 break;
-            case 6:
+            case 7:
                 puts("INSIRA O VALOR QUE DESEJA BUSCAR RECURSIVAMENTE:");
                 scanf("%d", &temp);
                 temp_cell = busca_rec(le, temp);
                 printf("o valor de sua celula eh: %d\n", temp_cell->dado);
                 break;
-            case 7:
+            case 8:
                 divide_lista(le, l1, l2);
                 break;
-            case 8:
+            case 9:
                 mescla_listas(l1, l2, le);
                 break;
         }

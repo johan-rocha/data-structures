@@ -27,7 +27,7 @@ objfolder:
 bin/$(MAIN).out:	$(OBJECT)
 	@ echo "linkando no .out"
 	$(CC) $(CFLAGS) $(OBJECT) -o $@
-	./$(BINDIR)/$(MAIN).out < ./src/input.txt 
+	./$(BINDIR)/$(MAIN).out
 
 obj/%.o:	src/%.c src/header.h
 	@ echo "Compilando objetos"
@@ -36,5 +36,5 @@ obj/%.o:	src/%.c src/header.h
 .PHONY:	clean objfolder binfolder
 
 clean:
-	rm -f $(BINDIR)/* $(OBJDIR)/*
+	rm -rf $(BINDIR)/* $(OBJDIR)/*
 	rmdir $(BINDIR) $(OBJDIR)
