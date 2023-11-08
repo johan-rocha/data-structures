@@ -32,12 +32,12 @@ void printStack(stackNode * n)
 stackNode *push(stackNode *stack, node *r){
     stackNode *new = malloc(sizeof(stackNode));
     new->root = r;
-    new->next = stack == NULL ? NULL : stack;
+    new->next = stack;
     return new;
 }
 
 //pop
-node *pop(stackNode ** stack){
+node *pop(stackNode ** stack){ //colocar condicao caso a pilha esteja vazia
     node *poped = top(*stack);
     *stack = (*stack)->next;
     return poped;
@@ -65,9 +65,31 @@ void printree(node *root) {
     }
 }
 
-void emOrdem()
+void preOrdem(node * raiz, stackNode * pilha)
 {
-    if(roo)
+    while(!is_empty(pilha))
+    {
+
+        while(raiz != NULL)
+        {
+            printf("[%d], ", raiz->key);
+            push(pilha, raiz);
+            raiz = raiz->left;
+        }
+        raiz = pop(pilha);
+        if(raiz->right != NULL)
+            raiz = raiz->right;
+    }
+}
+
+void emOrdem(node * raiz, stackNode * pilha)
+{
+
+}
+
+void posOrdem(node * raiz, stackNode * pilha)
+{
+
 }
 
 int main(){
@@ -76,17 +98,19 @@ int main(){
     r = insert(r, 5);
     r = insert(r, 2);
     r = insert(r, 15);
+    r = insert(r, 7);
+    r = insert(r, 13);
+    r = insert(r, 18);
 
     stackNode *stack = NULL;
 
     stack = push(stack, r);
-    stack = push(stack, r->left);
-    stack = push(stack, r->right);
-    node *t = pop(&stack);
+    //stack = push(stack, r->left);
+    //stack = push(stack, r->right);
+//    node * t = pop(&stack);
     printf("main: %d\n", stack->root->key);
-    printree(r);
-    printf("\n\n");
-    printStack(stack);
+    //printree(r);
+    //printStack(stack);
 }
 
 
