@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void showTheater(char ** v, int line_size, int column_size)
+void showTheater(char v[][25], int line_size, int column_size)
 {
     int i, j;
 
@@ -25,15 +25,7 @@ int main()
     scanf("%d %d\n", &F, &L);
 
     //create matrix
-    char ** theather = malloc(F * sizeof(char *));
-    if(!theather)
-        exit(EXIT_FAILURE);
-    for(int i=0; i < F; i++)
-    {
-        theather[i] = calloc(L, sizeof(char));
-        if(!theather[i])
-            exit(EXIT_FAILURE);
-    }
+    char theather[20][25] = {};
 
     char chosen_F; int chosen_L;
     while(scanf("%c%d", &chosen_F, &chosen_L) != EOF)
@@ -45,8 +37,4 @@ int main()
     }
 
     showTheater(theather, F, L);
-
-    for(int j=0; j < L; j++)
-        free(theather[j]);
-    free(theather);
 }
